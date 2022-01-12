@@ -2,5 +2,49 @@
 
 * {
     box-sizing: border-box;
+}
+
+body {
+    background-color: #7BDAF3;
+    display: flex;
+    flex-wrap: wrap;
     font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+.notes {
+    background-color: #FFF;
+    margin: 20px;
+    height: 400px;
+    width: 400px;
+}
+
+.notes .tools {
+    background-color: #9EC862;
+    display: flex;
+    justify-content: flex-end;
+    padding: .5rem;
+}
+
+.notes .tools button {
+    background-color: transparent;
+    border: none;
+    color: #FFF;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: .5rem;
+}
+
+.notes .main {
+    display: none;
+    height: 100%;
+    width: 100%;
+}
+
+.notes textarea {
+    border: none;
+    font-family: inherit;
+    outline: none;
+    height: 100%;
+    width: 100%;
 }
