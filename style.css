@@ -12,21 +12,34 @@ body {
     margin: 0;
 }
 
-.notes {
+.add {
+    background-color: #9EC862;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    padding: .5rem 1rem;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+}
+
+.note {
     background-color: #FFF;
+    box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.1);
     margin: 20px;
     height: 400px;
     width: 400px;
 }
 
-.notes .tools {
+.note .tools {
     background-color: #9EC862;
     display: flex;
     justify-content: flex-end;
     padding: .5rem;
 }
 
-.notes .tools button {
+.note .tools button {
     background-color: transparent;
     border: none;
     color: #FFF;
@@ -35,14 +48,14 @@ body {
     margin-left: .5rem;
 }
 
-.notes .main {
-    background-color: #FFF;
+.note .main {
+    background-color: #EEE;
     height: 400px;
     overflow: hidden;
     width: 100%;
 }
 
-.notes textarea {
+.note textarea {
     border: none;
     font-family: inherit;
     font-size: 1.2rem;
@@ -51,6 +64,6 @@ body {
     width: 100%;
 }
 
-.notes .hidden {
+.note .hidden {
     display: none;
 }
