@@ -1,10 +1,18 @@
 const btnAdd = document.getElementById('add');
 
+const notes = JSON.parse(localStorage.getItem('notes'));
+
+if (notes) {
+    notes.forEach(note => {
+        addNote(note);
+    })
+}
+
 btnAdd.addEventListener('click', () => {
     addNote();
 });
 
-function addNote() {
+function addNote(text = '') {
     const note = document.createElement('div');
     note.classList.add('note');
 
@@ -15,10 +23,10 @@ function addNote() {
             <button class="edit"><i class="fas fa-edit"></i></button>
             <button class="delete"><i class="fas fa-trash-alt"></i></button>
         </div>
-        <div class="main hidden">
+        <div class="main ${text ? '' : 'hidden'}">
         </div>
 
-        <textarea></textarea>
+        <textarea class="main ${text ? 'hidden' : ''}"></textarea>
     </div>
     `;
 
@@ -28,6 +36,9 @@ function addNote() {
     const main = note.querySelector('.main');
     const textArea = note.querySelector('textarea');
 
+    textArea.value = text;
+    main.innerHTML = marked(text);
+
     btnEdit.addEventListener('click', () => {
         main.classList.toggle('hidden');
         textArea.classList.toggle('hidden');
@@ -35,13 +46,26 @@ function addNote() {
 
     btnDelete.addEventListener('click', () => {
         note.remove();
+        updateLocalStorage();
     });
 
     textArea.addEventListener('input', (e) => {
         const { value } = e.target;
 
         main.innerHTML = marked.parse(value);
+
+        updateLocalStorage();
     });
 
     document.body.appendChild(note);
+}
+
+function updateLocalStorage() {
+    const notesText = document.querySelectorAll('textarea');
+    const notes = [];
+    notesText.forEach(note => {
+        notes.push(note.value);
+    });
+
+    localStorage.setItem('notes', JSON.stringify(notes));
 }
